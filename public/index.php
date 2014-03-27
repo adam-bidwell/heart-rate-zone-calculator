@@ -1,5 +1,5 @@
 <?php
-include 'vendor/autoload.php';
+include '../vendor/autoload.php';
 
 $fthr = null;
 $message = '';
@@ -14,14 +14,25 @@ if (is_array($_GET) && array_key_exists('bpm', $_GET))
     }
     else
     {
-        $fthr = new HeartRate($bpm);
-        $fthr->setBandStrategy(new BritishCyclingBandStrategy());
+        $fthr = new Training\HeartRate($bpm);
+        $fthr->setBandStrategy(new Training\BritishCyclingBandStrategy());
     }
 }
 ?>
 <html>
     <head>
         <title>Heart Rate Zones Calculator</title>
+        <style type="text/css">
+            body
+            {
+                font-family: verdana;
+            }
+            
+            th, td
+            {
+                border: 1px solid black;
+            }
+        </style>
     </head>
     <body>
         <p>
